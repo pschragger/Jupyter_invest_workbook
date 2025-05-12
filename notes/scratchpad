@@ -1,0 +1,19 @@
+events = [
+    ('1962-10-16', 'Cuban Missile Crisis', 'red'),
+    ('1973-10-06', 'Yom Kippur War', 'red'),
+    ( '1979-11-04', 'Iran Hostage Crisis', 'red'),
+    ( '1987-10-19', 'Black Monday Stock Market Crash', 'red'),
+    ( '1990-08-02', 'Iraq Invades Kuwait', 'red'),
+    ( '2001-09-11', '9/11 Terrorist Attacks', 'red'),
+    ( '2008-09-15', 'Lehman Brothers Collapse', 'red'),
+    ( '2020-03-23', 'COVID-19 Market Crash', 'red'),
+    ( '2020-11-03', 'US Presidential Election', 'blue'),
+    ( '2021-01-06', 'US Capitol Riot', 'red'),
+    ( '2021-03-11', 'US Stimulus Checks', 'green'),
+    ( '2021-09-20', 'Evergrande Default Warning', 'red'),
+    ( '2022-02-24', 'Russia-Ukraine War Begins', 'red'),
+    ( '2022-06-15', 'US Interest Rate Hike', 'red'),
+    ( '2022-11-08', 'Midterm Elections', 'blue'),
+    ( '2023-03-10', 'Silicon Valley Bank Collapse', 'red'),
+    ( '2023-06-01', 'US Debt Ceiling Crisis Resolved', 'green')
+]

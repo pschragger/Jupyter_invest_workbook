@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  jupyter:
+    image: jupyter/scipy-notebook:latest # You can change this to a different Jupyter image if needed
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./projects:/home/jovyan/projects # Mount a directory for your notebooks
+    working_dir: /home/jovyan/projects
+    command: "start.sh jupyter notebook --NotebookApp.token='' --NotebookApp.password=''" # Start Jupyter with no auth
+    # If you want to set a password, remove the '' and set a password.  For example:
+    # command: "start.sh jupyter notebook --NotebookApp.token='' --NotebookApp.password='mysecretpassword'"
+    container_name: jupyter
+    networks:
+      - jupyter-network
+
+  notebook1:
+    image: jupyter/scipy-notebook:latest
+    volumes:
+      - ./projects/notebook1:/home/jovyan/work  # Mount a subfolder for notebook1
+    working_dir: /home/jovyan/work
+    command: "start.sh jupyter notebook --notebook-dir=/home/jovyan/work --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token='' --NotebookApp.password=''"
+    ports:
+      - "8889:8888" # Expose on a different port
+    depends_on:
+      - jupyter
+    container_name: notebook1
+    networks:
+      - jupyter-network
+
+  notebook2:
+    image: jupyter/scipy-notebook:latest
+    volumes:
+      - ./projects/notebook2:/home/jovyan/work # Mount a different subfolder
+    working_dir: /home/jovyan/work
+    command: "start.sh jupyter notebook --notebook-dir=/home/jovyan/work --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token='' --NotebookApp.password=''"
+    ports:
+      - "8890:8888" # Expose on a different port
+    depends_on:
+      - jupyter
+    container_name: notebook2
+    networks:
+      - jupyter-network
+
+networks:
+  jupyter-network:
+    driver: bridge
